@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la mission{% endblock %}
+
+
+{% block body %}
+    <a href="{{ path('home') }}" class="btn btn-primary">Retour page de la liste des missions</a>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+
+        <h2>Détails de la mission :
+            {{ mission.codename }} -
+            {{ mission.title }} -
+            statut : {{ mission.status }} -
+            type : {{ mission.missionType }} -
+            début : {{ mission.beginAt|date('d/m/Y') }} -
+            fin : {{ mission.endedAt|date('d/m/Y') }}</h2>
+<div class="row m-2">
+    <div class="col-2 m-2">
+        <div class="container" style="border: solid black 1px; border-radius: 20px">
+            <h3>Cibles :</h3>
+            <table>
+                <tr>
+                    <th>Nom</th>
+                </tr>
+                {% for target in mission.Targets %}
+                    <tr>
+                        <td>{{ target.lastname }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="col-2 m-2">
+        <div class="container" style="border: solid black 1px; border-radius: 20px">
+            <h3>Agents sélectionnés :</h3>
+            <table>
+                <tr>
+                    <th>Nom</th>
+                </tr>
+                {% for agent in mission.Agents %}
+                    <tr>
+                        <td>{{ agent.lastname }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="col-2 m-2">
+        <div class="container" style="border: solid black 1px; border-radius: 20px">
+            <h3>liste des contacts :</h3>
+            <table>
+                <tr>
+                    <th>Nom</th>
+                </tr>
+                {% for contact in mission.Contacts %}
+                    <tr>
+                        <td>{{ contact.lastname }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

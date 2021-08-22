@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des missions{% endblock %}
+
+{% block body %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+
+<h2>Liste des missions</h2>
+
+
+<table>
+    <tr>
+        <th>Titre de la mission</th>
+        <th>Description</th>
+        <th>Pays</th>
+        <th>Actions</th>
+    </tr>
+    {% for mission in missions %}
+    <tr>
+       <td>{{ mission.title }}</td>
+       <td>{{ mission.description }}</td>
+       <td>{{ mission.country }}</td>
+        <td><a href="{{ path('mission_details', {'id': mission.id}) }}" class="btn btn-primary text-white">Voir détails mission</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
