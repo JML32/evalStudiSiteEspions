@@ -6,11 +6,11 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
@@ -19,12 +19,17 @@
                 <ul>
                     <li><a href="{{ path('home') }}">Liste des missions</a></li>
                     {% if app.user %}
-                        <li><a href="{{ path('admin_dashboard') }}">Dashboard admin</a></li>
+                        <li><a href="{{ path('admin') }}">Admin Dashboard</a></li>
                         <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
                     {% else %}
                         <li><a href="{{ path('app_login') }}">Se connecter</a></li>
                     {% endif %}
                 </ul>
+                <form action="{{ path('mission_search') }}">
+                    <label for="q">Rechercher des missions</label>
+                    <input type="text" name="q">
+                    <input type="submit">
+                </form>
             </nav>
         </header>
         {% block body %}{% endblock %}

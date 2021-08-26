@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultat de la recherche de mission{% endblock %}
+
+{% block body %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+    <div class="container">
+        <h2>Mission recherchée :</h2>
+        <table>
+            <tr>
+                <th class="text-center">Titre de la mission</th>
+                <th class="text-center">nom de code</th>
+                <th class="text-center">statut</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Pays</th>
+                <th class="text-center">Actions</th>
+            </tr>
+
+            <!-- INCLURE LES COULEURS EN BDD -->
+
+
+            {% for mission in missions %}
+                {% if mission.status =="echec" %}
+                    <tr style="background-color: darkred;">
+                {% elseif  mission.status == "termine" %}
+                    <tr style="background-color: palegreen">
+                {% elseif  mission.status == "encours" %}
+                    <tr style="background-color: yellow">
+                {% elseif  mission.status  == "debut" %}
+                    <tr style="background-color: darkgray">
+                {% endif %}
+                <td class="text-center">{{ mission.title }}</td>
+                <td class="text-center">{{ mission.codeName }}</td>
+                <td class="text-center">{{ mission.status }}</td>
+                <td class="text-center">{{ mission.description }}</td>
+                <td class="text-center">{{ mission.country }}</td>
+                <td class="text-center"><a href="{{ path('mission_details', {'id': mission.id}) }}" class="btn btn-primary text-white">Voir détails mission</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+
+    </div>
+{% endblock %}

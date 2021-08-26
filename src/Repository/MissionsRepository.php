@@ -19,6 +19,19 @@ class MissionsRepository extends ServiceEntityRepository
         parent::__construct($registry, Missions::class);
     }
 
+    public function searchByTerm($term)
+    {
+        $queryBuilder = $this->createQueryBuilder('Missions');
+
+        $query = $queryBuilder
+            ->select('Missions')
+            ->where('Missions.title LIKE :term')
+            ->setParameter('term', '%'.$term.'%')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Missions[] Returns an array of Missions objects
     //  */

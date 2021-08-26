@@ -6,7 +6,9 @@ use App\Repository\HideoutsRepository;
 use App\Repository\MissionsRepository;
 use App\Repository\MissionTypeRepository;
 use App\Repository\StatusRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,7 +20,7 @@ class MissionDetailController extends AbstractController
     public function index($id, MissionsRepository $missionsRepository,
                                StatusRepository $statusRepository,
                                MissionTypeRepository $missionTypeRepository,
-                                HideoutsRepository $hideoutsRepository): Response
+                               HideoutsRepository $hideoutsRepository): Response
     {
         $mission = $missionsRepository->find($id);
         $status = $statusRepository->findAll();

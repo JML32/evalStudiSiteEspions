@@ -55,7 +55,11 @@ class MissionsFixtures extends Fixture implements DependentFixtureInterface
                            ->setBirthdate($faker->dateTimeBetween('-45 years', '-18 years'))
                            ->setIdentificationId($faker->randomNumber(6, true))
                            ->setNationality($faker->country)
+                           ->addSpeciality($this->getReference(SpecialitiesFixtures::specialities[rand(0,6)]))
+                           ->addSpeciality($this->getReference(SpecialitiesFixtures::specialities[rand(0,6)]))
+                           ->addSpeciality($this->getReference(SpecialitiesFixtures::specialities[rand(0,6)]))
                 ;
+
                 $manager->persist($agents[$i]);
             }
 
@@ -82,11 +86,15 @@ class MissionsFixtures extends Fixture implements DependentFixtureInterface
                              ->setCodeName('Mission ' . $faker->randomNumber(2, true))
                              ->setCountry($faker->country())
                              ->setMissionType($this->getReference(MissionTypeFixtures::missionTypes[rand(0, 3)]))
+                             ->addRequiredSpeciality($this->getReference(SpecialitiesFixtures::specialities[rand(0,6)]))
+                             ->addRequiredSpeciality($this->getReference(SpecialitiesFixtures::specialities[rand(0,6)]))
+                             ->addRequiredSpeciality($this->getReference(SpecialitiesFixtures::specialities[rand(0,6)]))
+                             ->addRequiredSpeciality($this->getReference(SpecialitiesFixtures::specialities[rand(0,6)]))
                              ->setBeginAt($faker->dateTimeBetween('-3 years', '-2 years'))
                              ->setEndedAt($faker->dateTimeBetween('-1 year', 'now'));
 
                 // include hideouts in missions instances
-                // get a random number of hidouts in an array
+                // get a random number of hideouts in an array
                 $randomHideouts= (array)array_rand($hideouts, rand(1,count($hideouts)));
                 // and add this hideouts to each mission
                 foreach ($randomHideouts as $key => $value) {
