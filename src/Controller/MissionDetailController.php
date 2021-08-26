@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\HideoutsRepository;
 use App\Repository\MissionsRepository;
 use App\Repository\MissionTypeRepository;
 use App\Repository\StatusRepository;
@@ -16,16 +17,19 @@ class MissionDetailController extends AbstractController
      */
     public function index($id, MissionsRepository $missionsRepository,
                                StatusRepository $statusRepository,
-                               MissionTypeRepository $missionTypeRepository): Response
+                               MissionTypeRepository $missionTypeRepository,
+                                HideoutsRepository $hideoutsRepository): Response
     {
         $mission = $missionsRepository->find($id);
         $status = $statusRepository->findAll();
         $missionType = $missionTypeRepository->findAll();
+        $hideouts = $hideoutsRepository->findAll();
 
         return $this->render('mission_detail/index.html.twig', [
             'mission' => $mission,
             'status' => $status,
-            'missionType' => $missionType
+            'missionType' => $missionType,
+            'hideouts' => $hideouts
         ]);
     }
 }

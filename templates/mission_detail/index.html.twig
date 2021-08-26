@@ -66,6 +66,7 @@
             </table>
         </div>
     </div>
+
     <div class="col-2 m-2">
         <div class="container" style="border: solid black 1px; border-radius: 20px">
             <h3>liste des contacts :</h3>
@@ -81,6 +82,29 @@
             </table>
         </div>
     </div>
+
+    <div class="col-4 m-2">
+        <div class="container" style="border: solid black 1px; border-radius: 20px">
+            <h3>liste des planques :</h3>
+            <table>
+                <tr>
+                    <th>Adresse</th>
+                    <th>code</th>
+                    <th>type</th>
+                </tr>
+                {% for hideout in mission.Hideouts %}
+                    <tr>
+                        <td>{{ hideout.code }}</td>
+                        <td>{{ hideout.type }}</td>
+                        <td>{{ hideout.address }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+
 </div>
 
 

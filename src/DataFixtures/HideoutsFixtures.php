@@ -12,7 +12,7 @@ class HideoutsFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        for($i=0; $i<20; $i++){
+        for($i=0; $i<2; $i++){
             $hideouts = New Hideouts;
             $faker = Faker::create();
             $hideouts->setCode($faker->randomNumber(3,true));

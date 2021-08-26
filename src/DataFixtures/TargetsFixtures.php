@@ -12,7 +12,7 @@ class TargetsFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        for($i=0; $i<20; $i++){
+        for($i=0; $i<2; $i++){
             $target = New Targets;
             $faker = Faker::create();
             $target->setFirstName($faker->firstName);

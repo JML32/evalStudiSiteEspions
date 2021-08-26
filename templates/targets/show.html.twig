@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Targets{% endblock %}
+
+{% block body %}
+    <h1>Targets</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ target.id }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ target.lastname }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ target.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Birthdate</th>
+                <td>{{ target.birthdate ? target.birthdate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CodeName</th>
+                <td>{{ target.codeName }}</td>
+            </tr>
+            <tr>
+                <th>Nationality</th>
+                <td>{{ target.nationality }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('targets_index') }}">back to list</a>
+
+    <a href="{{ path('targets_edit', {'id': target.id}) }}">edit</a>
+
+    {{ include('targets/_delete_form.html.twig') }}
+{% endblock %}

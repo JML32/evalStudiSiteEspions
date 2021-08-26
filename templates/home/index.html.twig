@@ -23,25 +23,39 @@
     }
 </style>
 
+<div class="container">
+    <h2>Liste des missions</h2>
+    <table>
+        <tr>
+            <th class="text-center">Titre de la mission</th>
+            <th class="text-center">nom de code</th>
+            <th class="text-center">statut</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Pays</th>
+            <th class="text-center">Actions</th>
+        </tr>
 
-<h2>Liste des missions</h2>
+        <!-- INCLURE LES COULEURS EN BDD -->
 
 
-<table>
-    <tr>
-        <th>Titre de la mission</th>
-        <th>Description</th>
-        <th>Pays</th>
-        <th>Actions</th>
-    </tr>
-    {% for mission in missions %}
-    <tr>
-       <td>{{ mission.title }}</td>
-       <td>{{ mission.description }}</td>
-       <td>{{ mission.country }}</td>
-        <td><a href="{{ path('mission_details', {'id': mission.id}) }}" class="btn btn-primary text-white">Voir détails mission</a></td>
-    </tr>
-    {% endfor %}
-</table>
-
-{% endblock %}
+        {% for mission in missions %}
+            {% if mission.status =="echec" %}
+        <tr style="background-color: darkred;">
+            {% elseif  mission.status == "termine" %}
+                <tr style="background-color: palegreen">
+            {% elseif  mission.status == "encours" %}
+                <tr style="background-color: yellow">
+            {% elseif  mission.status  == "debut" %}
+                <tr style="background-color: darkgray">
+                    {% endif %}
+           <td class="text-center">{{ mission.title }}</td>
+            <td class="text-center">{{ mission.codeName }}</td>
+            <td class="text-center">{{ mission.status }}</td>
+           <td class="text-center">{{ mission.description }}</td>
+           <td class="text-center">{{ mission.country }}</td>
+            <td class="text-center"><a href="{{ path('mission_details', {'id': mission.id}) }}" class="btn btn-primary text-white">Voir détails mission</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+    {% endblock %}
