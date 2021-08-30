@@ -6,6 +6,7 @@ use App\Repository\MissionsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MissionsRepository::class)
@@ -318,9 +319,17 @@ class Missions
         return $this;
     }
 
-public function __toString() {
-        return $this->getTitle().' '.$this->getDescription();
-}
+    public function __toString() {
+            return $this->getTitle().' '.$this->getDescription();
+    }
+
+    /**
+     * @Assert\IsTrue(message="Agents et cibles doivent être différents")
+     */
+    public function isAgentsTargetsCorrects(Agents $agents, Targets $targets)
+    {
+        return $this->Agents !== $this->Targets;
+    }
 
 
 

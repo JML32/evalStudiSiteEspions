@@ -15,22 +15,25 @@
     </head>
     <body>
         <header>
-            <nav>
+            <div class="menu">
+
                 <ul>
                     <li><a href="{{ path('home') }}">Liste des missions</a></li>
                     {% if app.user %}
                         <li><a href="{{ path('admin') }}">Admin Dashboard</a></li>
                         <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
                     {% else %}
-                        <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                        <li><a href="{{ path('app_login') }}" class="login">Se connecter</a></li>
                     {% endif %}
+                    <form action="{{ path('mission_search') }}">
+                        <label for="q">titre de mission</label>
+                        <input type="text" name="q">
+                        <input type="submit" value="Rechercher">
+                    </form>
                 </ul>
-                <form action="{{ path('mission_search') }}">
-                    <label for="q">Rechercher des missions</label>
-                    <input type="text" name="q">
-                    <input type="submit">
-                </form>
-            </nav>
+
+            </div>
+
         </header>
         {% block body %}{% endblock %}
     </body>

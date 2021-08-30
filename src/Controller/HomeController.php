@@ -48,12 +48,6 @@ class HomeController extends AbstractController
         ]);
     }
 
-    //TODO : Sur une mission, la ou les cibles ne peuvent pas avoir la même nationalité que le ou les agents.
-    //TODO ● Sur une mission, les contacts sont obligatoirement de la nationalité du pays de la mission.
-    //TODO ● Sur une mission, la planque est obligatoirement dans le même pays que la mission.
-    //TODO ● Sur une mission, il faut assigner au moins 1 agent disposant de la spécialité requise
 
-    //TODO : Ajouter un système de filtres et de tri sur toutes les listes du site
-    //TODO ● Utiliser l'AJAX pour envoyer et récupérer des données vers votre backend de façon asynchrone, sans avoir à recharger la page
 
 }
