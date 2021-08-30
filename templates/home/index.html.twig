@@ -11,12 +11,12 @@
         <table class="table">
             <thead class="thead-dark">
             <tr>
-                <th scope="col" class="text-center h3">Titre de la mission</th>
-                <th scope="col" class="text-center h3">nom de code</th>
-                <th scope="col" class="text-center h3">statut</th>
-                <th scope="col" class="text-center h3">description</th>
-                <th scope="col" class="text-center h3">pays</th>
-                <th scope="col" class="text-center h3">actions</th>
+                <th scope="col" class="text-center h5">Titre de la mission</th>
+                <th scope="col" class="text-center h5">nom de code</th>
+                <th scope="col" class="text-center h5">statut</th>
+                <th scope="col" class="text-center h5">description</th>
+                <th scope="col" class="text-center h5">pays</th>
+                <th scope="col" class="text-center h5">actions</th>
             </tr>
             </thead>
             <tbody>
@@ -31,12 +31,12 @@
             <tr style="background-color: darkgray">
                 {% endif %}
 
-                <td class="text-center h4">{{ mission.title }}</td>
-                <td class="text-center h4">{{ mission.codeName }}</td>
-                <td class="text-center h4">{{ mission.status }}</td>
-                <td class="text-center h4">{{ mission.description }}</td>
-                <td class="text-center h4">{{ mission.country }}</td>
-                <td class="text-center h4"><a href="{{ path('mission_details', {'id': mission.id}) }}" class="btn btn-primary text-white">Voir détails mission</a></td>
+                <td class="text-center">{{ mission.title }}</td>
+                <td class="text-center">{{ mission.codeName }}</td>
+                <td class="text-center">{{ mission.status }}</td>
+                <td class="text-center">{{ mission.description }}</td>
+                <td class="text-center">{{ mission.country }}</td>
+                <td class="text-center"><a href="{{ path('mission_details', {'id': mission.id}) }}" class="btn btn-primary text-white">Voir détails mission</a></td>
             </tr>
             {% endfor %}
             </tbody>

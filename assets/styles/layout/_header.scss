@@ -7,13 +7,7 @@ header {
     display: flex;
     align-items: center;
 
-    .login{
-      margin-right: 50vw;
-    }
 
-    img {
-      margin-left: 20px;
-    }
 
     li {
       display: inline-block;
@@ -26,8 +20,7 @@ header {
         padding: 0 10px;
         text-decoration: none;
 
-
-        &:hover {
+       &:hover {
           color: $color-tertiary;
         }
       }
@@ -35,8 +28,7 @@ header {
   }
 
   form{
-    margin-left: auto;
-    margin-right: 20px;
+    margin-left: 45vw;
     display:inline-block;
 
     label {

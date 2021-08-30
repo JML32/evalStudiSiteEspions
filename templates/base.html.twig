@@ -23,7 +23,7 @@
                         <li><a href="{{ path('admin') }}">Admin Dashboard</a></li>
                         <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
                     {% else %}
-                        <li><a href="{{ path('app_login') }}" class="login">Se connecter</a></li>
+                        <li><a href="{{ path('app_login') }}">Se connecter</a></li>
                     {% endif %}
                     <form action="{{ path('mission_search') }}">
                         <label for="q">titre de mission</label>
